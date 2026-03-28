@@ -125,7 +125,7 @@ button:hover {
 <input type="file">
 <label>Passport Size Photo</label>
 <input type="file">
-<button>Submit</button>
+ <button onclick="submitDriver()">Submit</button>
 <button class="back-btn" onclick="goBack()">Back</button>
 </div>
 
@@ -145,7 +145,7 @@ button:hover {
 <option>Diesel</option>
 </select>
 
-<button>Submit</button>
+<button onclick="submitVehicle()">Submit</button>
 <button class="back-btn" onclick="goBack()">Back</button>
 </div>
 
@@ -156,8 +156,7 @@ button:hover {
 <input type="number" placeholder="Phone Number">
 <input type="number" placeholder="Alt Phone Number">
 <input type="email" placeholder="Email">
-
-<button>Submit</button>
+<button onclick="submitErickshaw()">Submit</button>
 <button class="back-btn" onclick="goBack()">Back</button>
 </div>
 
@@ -228,7 +227,36 @@ function submitErickshaw(){
   .then(res => alert("E-Rickshaw Data Saved"))
   .catch(err => alert("Error"));
 }
+
+// SHOW FORM
+function showForm(type){
+  document.querySelector('.cards').style.display = "none";
+
+  document.getElementById("driverForm").style.display = "none";
+  document.getElementById("vehicleForm").style.display = "none";
+  document.getElementById("erickshawForm").style.display = "none";
+
+  if(type === 'driver'){
+    document.getElementById("driverForm").style.display = "block";
+  }
+  if(type === 'vehicle'){
+    document.getElementById("vehicleForm").style.display = "block";
+  }
+  if(type === 'erickshaw'){
+    document.getElementById("erickshawForm").style.display = "block";
+  }
+}
+
+// GO BACK
+function goBack(){
+  document.querySelector('.cards').style.display = "flex";
+
+  document.getElementById("driverForm").style.display = "none";
+  document.getElementById("vehicleForm").style.display = "none";
+  document.getElementById("erickshawForm").style.display = "none";
+}
 </script>
+
 
 </body>
 </html>
