@@ -163,30 +163,70 @@ button:hover {
 
 </div>
 
+
 <script>
-function showForm(type){
-  document.querySelector('.cards').style.display = "none";
+const scriptURL = "https://script.google.com/macros/s/AKfycby3uB0-AY85C4B5F7DMsnqX3aZSkrPczPgSVodplW_5e3CEcyD06Zfpo9VwCbJGpIQx/exec";
 
-  document.getElementById("driverForm").style.display = "none";
-  document.getElementById("vehicleForm").style.display = "none";
-  document.getElementById("erickshawForm").style.display = "none";
+// DRIVER SUBMIT
+function submitDriver(){
+  const data = {
+    type: "driver",
+    name: document.querySelector("#driverForm input:nth-child(2)").value,
+    dob: document.querySelector("#driverForm input:nth-child(3)").value,
+    address: document.querySelector("#driverForm input:nth-child(4)").value,
+    phone: document.querySelector("#driverForm input:nth-child(5)").value,
+    alt_phone: document.querySelector("#driverForm input:nth-child(6)").value,
+    email: document.querySelector("#driverForm input:nth-child(7)").value,
+    license: document.querySelector("#driverForm input:nth-child(8)").value,
+    license_photo: "Uploaded",
+    passport_photo: "Uploaded"
+  };
 
-  if(type === 'driver'){
-    document.getElementById("driverForm").style.display = "block";
-  }
-  if(type === 'vehicle'){
-    document.getElementById("vehicleForm").style.display = "block";
-  }
-  if(type === 'erickshaw'){
-    document.getElementById("erickshawForm").style.display = "block";
-  }
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => alert("Driver Data Saved"))
+  .catch(err => alert("Error"));
 }
 
-function goBack(){
-  document.querySelector('.cards').style.display = "flex";
-  document.getElementById("driverForm").style.display = "none";
-  document.getElementById("vehicleForm").style.display = "none";
-  document.getElementById("erickshawForm").style.display = "none";
+// VEHICLE SUBMIT
+function submitVehicle(){
+  const data = {
+    type: "vehicle",
+    owner_name: document.querySelector("#vehicleForm input:nth-child(2)").value,
+    vehicle_number: document.querySelector("#vehicleForm input:nth-child(3)").value,
+    phone: document.querySelector("#vehicleForm input:nth-child(4)").value,
+    alt_phone: document.querySelector("#vehicleForm input:nth-child(5)").value,
+    email: document.querySelector("#vehicleForm input:nth-child(6)").value,
+    vehicle_model: document.querySelector("#vehicleForm input:nth-child(7)").value,
+    fuel: document.querySelector("#vehicleForm select").value
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => alert("Vehicle Data Saved"))
+  .catch(err => alert("Error"));
+}
+
+// ERICKSHAW SUBMIT
+function submitErickshaw(){
+  const data = {
+    type: "erickshaw",
+    owner_name: document.querySelector("#erickshawForm input:nth-child(2)").value,
+    phone: document.querySelector("#erickshawForm input:nth-child(3)").value,
+    alt_phone: document.querySelector("#erickshawForm input:nth-child(4)").value,
+    email: document.querySelector("#erickshawForm input:nth-child(5)").value
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(res => alert("E-Rickshaw Data Saved"))
+  .catch(err => alert("Error"));
 }
 </script>
 
