@@ -41,54 +41,12 @@ input, select, button {
 <div class="form-box">
 <h2>Driver Registration</h2>
 
-<input id="name" type="text" placeholder="Full Name">
-<input id="dob" type="date">
-<input id="address" type="text" placeholder="Address">
-<input id="phone" type="text" placeholder="Phone">
-<input id="alt_phone" type="text" placeholder="Alt Phone">
-<input id="email" type="email" placeholder="Email">
-<input id="license" type="text" placeholder="License Number">
-
 <button onclick="submitDriver()">Submit</button>
 
 </div>
 </div>
 
-<script>
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbyKeK8N3-7ew4bQFj8t_KeE8b1pIU_HW61RFUBSY0VNEjLLOJ6I2yoNMuUzB18Q7dGd/exec";
-
-function submitDriver(){
-
-  const data = {
-    type: "driver",
-    name: document.getElementById("name").value,
-    dob: document.getElementById("dob").value,
-    address: document.getElementById("address").value,
-    phone: document.getElementById("phone").value,
-    alt_phone: document.getElementById("alt_phone").value,
-    email: document.getElementById("email").value,
-    license: document.getElementById("license").value
-  };
-
-  fetch(scriptURL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(response => {
-    alert("✅ Data Saved Successfully");
-  })
-  .catch(err => {
-    console.error(err);
-    alert("❌ Error submitting form");
-  });
-}
-
-</script>
 
 </body>
 </html>
