@@ -6,95 +6,30 @@
 <title>Smart Login System</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
-
 body {
+  font-family: Arial;
   background: linear-gradient(135deg, #4facfe, #00f2fe);
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .container {
-  width: 95%;
-  max-width: 1000px;
-  text-align: center;
+  width: 90%;
+  max-width: 500px;
 }
 
-/* Title */
-h1 {
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* Cards */
-.cards {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: rgba(255,255,255,0.2);
-  padding: 25px;
-  border-radius: 20px;
-  width: 250px;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-/* Form Box */
 .form-box {
-  display: none;
-  margin-top: 20px;
   background: white;
-  padding: 25px;
-  border-radius: 15px;
-  text-align: left;
-}
-
-.form-box h2 {
-  margin-bottom: 15px;
-}
-
-input, select {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-button {
-  width: 100%;
-  padding: 12px;
-  background: #4facfe;
-  color: white;
-  border: none;
+  padding: 20px;
   border-radius: 10px;
-  margin-top: 10px;
-  cursor: pointer;
 }
 
-button:hover {
-  background: #007bff;
-}
-
-.back-btn {
-  background: gray;
-  margin-top: 10px;
+input, select, button {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
 }
 </style>
 </head>
@@ -103,160 +38,57 @@ button:hover {
 
 <div class="container">
 
-<h1>🚗 Select Login Type</h1>
-
-<div class="cards">
-  <div class="card" onclick="showForm('driver')">👨‍✈️<h3>Driver</h3></div>
-  <div class="card" onclick="showForm('vehicle')">🚙<h3>Vehicle Owner</h3></div>
-  <div class="card" onclick="showForm('erickshaw')">🛺<h3>E-Rickshaw</h3></div>
-</div>
-
-<!-- DRIVER FORM -->
-<div id="driverForm" class="form-box">
+<div class="form-box">
 <h2>Driver Registration</h2>
-<input type="text" placeholder="Full Name">
-<input type="date">
-<input type="text" placeholder="Address">
-<input type="number" placeholder="Phone Number">
-<input type="number" placeholder="Alt Phone Number">
-<input type="email" placeholder="Email">
-<input type="text" placeholder="Driving License Number">
-<label>Upload License Photo</label>
-<input type="file">
-<label>Passport Size Photo</label>
-<input type="file">
- <button onclick="submitDriver()">Submit</button>
-<button class="back-btn" onclick="goBack()">Back</button>
-</div>
 
-<!-- VEHICLE FORM -->
-<div id="vehicleForm" class="form-box">
-<h2>Vehicle Owner Registration</h2>
-<input type="text" placeholder="Owner Name">
-<input type="text" placeholder="Vehicle Number">
-<input type="number" placeholder="Phone Number">
-<input type="number" placeholder="Alt Phone Number">
-<input type="email" placeholder="Email">
-<input type="text" placeholder="Vehicle Model">
+<input id="name" type="text" placeholder="Full Name">
+<input id="dob" type="date">
+<input id="address" type="text" placeholder="Address">
+<input id="phone" type="text" placeholder="Phone">
+<input id="alt_phone" type="text" placeholder="Alt Phone">
+<input id="email" type="email" placeholder="Email">
+<input id="license" type="text" placeholder="License Number">
 
-<select>
-<option>Select Fuel Type</option>
-<option>Petrol</option>
-<option>Diesel</option>
-</select>
-
-<button onclick="submitVehicle()">Submit</button>
-<button class="back-btn" onclick="goBack()">Back</button>
-</div>
-
-<!-- E-RICKSHAW FORM -->
-<div id="erickshawForm" class="form-box">
-<h2>E-Rickshaw Registration</h2>
-<input type="text" placeholder="Owner Name">
-<input type="number" placeholder="Phone Number">
-<input type="number" placeholder="Alt Phone Number">
-<input type="email" placeholder="Email">
-<button onclick="submitErickshaw()">Submit</button>
-<button class="back-btn" onclick="goBack()">Back</button>
-</div>
+<button onclick="submitDriver()">Submit</button>
 
 </div>
-
+</div>
 
 <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycby3uB0-AY85C4B5F7DMsnqX3aZSkrPczPgSVodplW_5e3CEcyD06Zfpo9VwCbJGpIQx/exec";
 
-// DRIVER SUBMIT
+const scriptURL = "PASTE_YOUR_NEW_SCRIPT_URL_HERE";
+
 function submitDriver(){
+
   const data = {
     type: "driver",
-    name: document.querySelector("#driverForm input:nth-child(2)").value,
-    dob: document.querySelector("#driverForm input:nth-child(3)").value,
-    address: document.querySelector("#driverForm input:nth-child(4)").value,
-    phone: document.querySelector("#driverForm input:nth-child(5)").value,
-    alt_phone: document.querySelector("#driverForm input:nth-child(6)").value,
-    email: document.querySelector("#driverForm input:nth-child(7)").value,
-    license: document.querySelector("#driverForm input:nth-child(8)").value,
-    license_photo: "Uploaded",
-    passport_photo: "Uploaded"
+    name: document.getElementById("name").value,
+    dob: document.getElementById("dob").value,
+    address: document.getElementById("address").value,
+    phone: document.getElementById("phone").value,
+    alt_phone: document.getElementById("alt_phone").value,
+    email: document.getElementById("email").value,
+    license: document.getElementById("license").value
   };
 
   fetch(scriptURL, {
     method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
     body: JSON.stringify(data)
   })
-  .then(res => alert("Driver Data Saved"))
-  .catch(err => alert("Error"));
-}
-
-// VEHICLE SUBMIT
-function submitVehicle(){
-  const data = {
-    type: "vehicle",
-    owner_name: document.querySelector("#vehicleForm input:nth-child(2)").value,
-    vehicle_number: document.querySelector("#vehicleForm input:nth-child(3)").value,
-    phone: document.querySelector("#vehicleForm input:nth-child(4)").value,
-    alt_phone: document.querySelector("#vehicleForm input:nth-child(5)").value,
-    email: document.querySelector("#vehicleForm input:nth-child(6)").value,
-    vehicle_model: document.querySelector("#vehicleForm input:nth-child(7)").value,
-    fuel: document.querySelector("#vehicleForm select").value
-  };
-
-  fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(data)
+  .then(res => res.json())
+  .then(response => {
+    alert("✅ Data Saved Successfully");
   })
-  .then(res => alert("Vehicle Data Saved"))
-  .catch(err => alert("Error"));
+  .catch(err => {
+    console.error(err);
+    alert("❌ Error submitting form");
+  });
 }
 
-// ERICKSHAW SUBMIT
-function submitErickshaw(){
-  const data = {
-    type: "erickshaw",
-    owner_name: document.querySelector("#erickshawForm input:nth-child(2)").value,
-    phone: document.querySelector("#erickshawForm input:nth-child(3)").value,
-    alt_phone: document.querySelector("#erickshawForm input:nth-child(4)").value,
-    email: document.querySelector("#erickshawForm input:nth-child(5)").value
-  };
-
-  fetch(scriptURL, {
-    method: "POST",
-    body: JSON.stringify(data)
-  })
-  .then(res => alert("E-Rickshaw Data Saved"))
-  .catch(err => alert("Error"));
-}
-
-// SHOW FORM
-function showForm(type){
-  document.querySelector('.cards').style.display = "none";
-
-  document.getElementById("driverForm").style.display = "none";
-  document.getElementById("vehicleForm").style.display = "none";
-  document.getElementById("erickshawForm").style.display = "none";
-
-  if(type === 'driver'){
-    document.getElementById("driverForm").style.display = "block";
-  }
-  if(type === 'vehicle'){
-    document.getElementById("vehicleForm").style.display = "block";
-  }
-  if(type === 'erickshaw'){
-    document.getElementById("erickshawForm").style.display = "block";
-  }
-}
-
-// GO BACK
-function goBack(){
-  document.querySelector('.cards').style.display = "flex";
-
-  document.getElementById("driverForm").style.display = "none";
-  document.getElementById("vehicleForm").style.display = "none";
-  document.getElementById("erickshawForm").style.display = "none";
-}
 </script>
-
 
 </body>
 </html>
