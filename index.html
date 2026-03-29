@@ -5,69 +5,99 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Smart Login System</title>
 
-<body>
-	<div class="video-container">
-		<video src=
-"
-<body>
-	<div class="video-container">
-		<video src=
-"https://media.geeksforgeeks.org/wp-content/uploads/20221105184949/ezgif.com-gif-maker.mp4"
-			autoplay loop muted>
-		</video>
-	</div>
-	</div>
-</body>
 <style>
-body {
-  font-family: Arial;
-  background: linear-gradient(135deg, #4facfe, #00f2fe);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: Arial;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Background Video */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Form Styling */
 .container {
+  position: relative;
+  z-index: 1;
   width: 90%;
   max-width: 500px;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .form-box {
-  background: white;
+  background: rgba(255,255,255,0.85);
   padding: 20px;
   border-radius: 10px;
+  text-align: center;
 }
 
-input, select, button {
+button {
   width: 100%;
-  margin: 8px 0;
-  padding: 10px;
+  margin: 10px 0;
+  padding: 12px;
+  border: none;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
 }
 </style>
 </head>
 
 <body>
 
+<!-- Background Video -->
+<div class="video-container">
+  <video autoplay loop muted>
+    <source src="WhatsApp Video 2026-03-29 at 8.50.45 AM.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- Content -->
 <div class="container">
+  <div class="form-box">
+    <h2>Registration</h2>
 
-<div class="form-box">
-<h2> Registration </h2>
-<a href="https://jituloying1.github.io/PATHAIDEDRIVER/">
-  <button> Driver registration </button>
-</a>
-  <a href="https://jituloying1.github.io/PATHAIDEVEHICLE/">
-  <button> Vehicle registration </button>
-</a>
-  <a href="https://jituloying1.github.io/pathaideerikshaw/">
-  <button> E-Rickshaw registration </button>
-</a>
+    <a href="https://jituloying1.github.io/PATHAIDEDRIVER/">
+      <button>Driver Registration</button>
+    </a>
 
-  
+    <a href="https://jituloying1.github.io/PATHAIDEVEHICLE/">
+      <button>Vehicle Registration</button>
+    </a>
+
+    <a href="https://jituloying1.github.io/pathaideerikshaw/">
+      <button>E-Rickshaw Registration</button>
+    </a>
+
+  </div>
 </div>
-</div>
-
-
 
 </body>
 </html>
